@@ -1,0 +1,12 @@
+<component name="org.nuxeo.question.Question">
+
+   <extension target="org.nuxeo.ecm.core.api.DocumentAdapterService" point="adapters">
+       <adapter
+           class="org.nuxeo.question.Question"
+           factory="org.nuxeo.question.QuestionFactory"/>
+       <adapter
+           class="org.nuxeo.question.Answer"
+           factory="org.nuxeo.question.AnswerFactory"/>
+   </extension>
+    
+</component>

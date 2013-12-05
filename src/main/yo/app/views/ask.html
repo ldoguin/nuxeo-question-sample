@@ -1,0 +1,29 @@
+<form name="myForm">
+
+  <div class="ui form control-group" ng-class="{error: myForm.name.$invalid}">
+    <label>Ask a question</label>
+    <input type="text" name="title" ng-model="doc.properties['dc:title']" required>
+    <span ng-show="myForm.name.$error.required" class="help-inline">
+        Required</span>
+  </div>
+  <br>
+  <div class="ui form control-group" ng-class="{error: myForm.site.$invalid}">
+  <textarea name="description" ng-model="doc.properties['dc:description']" required></textarea>
+    <span ng-show="myForm.site.$error.required" class="help-inline">
+        Required</span>
+  </div>
+
+  <div class="ui form control-group">
+    <label>Communities</label>
+    <select multiple id="communities" class="input-medium" ng-model="doc.properties['qs:community']">
+       <option ng-repeat="community in communities">{{community.title}}</option>
+    </select>
+  </div>
+  <br>
+  <a href="#/questions" class="btn">Cancel</a>
+  <button ng-click="save()" ng-disabled="isClean() || myForm.$invalid"
+          class="btn btn-primary">Answer</button>
+
+
+</form>
+

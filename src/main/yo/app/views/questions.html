@@ -1,0 +1,23 @@
+<h2 class="ui dividing header">Questions</h2>
+
+<div ng-model="nxsearch.query" class="ui divid  ed list" infinite-scroll="nxsearch.nextPage()" infinite-scroll-disabled="nxsearch.busy" infinite-scroll-distance="1">
+  <div class="item" ng-repeat="item in nxsearch.items">
+    <div class="sides">
+      <div class="active side">
+        <a href="#/question/{{item.value.id}}/view">
+          <div class="content">
+            <div class="name">{{item.value.title}}</div>
+            <p class="description">{{item.value.description}}</p>
+            <div ng-repeat="com in item.value.communities">
+              <p class="description">{{com}}</p>
+            </div>
+            <p class="description">{{item.value.modified | date:'yyyy-MM-dd HH:mm:ss'}}</p>
+            <p class="description">{{item.value.creator}}</p>
+            <p class="description">{{item.value.votes}}</p>
+            <p class="description">{{item.value.answers}}</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

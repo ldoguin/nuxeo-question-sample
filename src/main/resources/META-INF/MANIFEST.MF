@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-Vendor: Nuxeo
+Nuxeo-RequiredBy: org.nuxeo.ecm.war
+Bundle-Version: 0.0.1
+Bundle-Name: nuxeo AngularJS question sample
+Bundle-ManifestVersion: 1
+Nuxeo-Component: OSGI-INF/authentication-contrib.xml,OSGI-INF/extensions/org.nu
+ xeo.question.Question.xml,OSGI-INF/extensions/org.nuxeo.question.Vote
+ Up.xml,OSGI-INF/extensions/org.nuxeo.question.VoteDown.xml
+Bundle-SymbolicName: org.nuxeo.angular.question.sample;singleton:=true
+

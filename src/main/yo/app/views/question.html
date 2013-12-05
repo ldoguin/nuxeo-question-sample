@@ -1,0 +1,72 @@
+<h1 class="ui dividing header">
+  {{doc.title}}
+</h1>
+
+<div class="ui one docs">
+  <div class="doc">
+    <div class="sides">
+      <div class="active side">
+        <div class="content">
+          <div class="name">{{doc.title}}</div>
+          <p class="description">{{doc.description}}</p>
+          <p class="description">{{doc.properties["qs:community"]}}</p>
+          <p class="description">{{doc.properties["qs:score"]}}</p>
+        </div>
+        <form name="qForm">
+          <button ng-click="destroy()"
+            ng-show="doc.uid" class="btn btn-danger">Delete</button>            
+          <i class="sort ascending icon"></i>
+          <button ng-click="voteUp(doc.id)"
+            ng-show="doc.uid" class="btn">Vote Up</button>            
+          <button ng-click="voteDown(doc.id)"
+            ng-show="doc.uid" class="btn">Vote Down</button>            
+            <i class="sort descending icon"></i>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<h2 class="ui dividing header">Available Answers</h2>
+  <div ng-repeat="a in answers track by $index">
+	<div class="ui one docs">
+	  <div class="doc">
+	    <div class="sides">
+	      <div class="active side">
+	        <div class="content">
+            <div class="name">{{a.value.description}}</div>
+            <div class="name">{{a.value.id}}</div>
+            <p class="description">{{a.value.modified | date:'yyyy-MM-dd HH:mm:ss'}}</p>
+            <p class="description">{{a.value.creator}}</p>
+            <p class="description">{{a.value.votes}}</p>
+	        </div>
+	        <form name="qForm">
+	          <button ng-click="destroyAnswer(a.value.id)"
+	            ng-show="a.value.id" class="btn btn-danger">Delete</button>            
+	          <button ng-click="voteUp(a.value.id)"
+	            ng-show="a.value.id" class="btn btn-danger">Vote Up</button>            
+	          <button ng-click="voteDown(a.value.id)"
+	            ng-show="a.value.id" class="btn btn-danger">Vote Down</button>            
+	        </form>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+  </div>
+
+<h2 class="ui dividing header">Answer this question</h2>
+  <form class="ui segment" name="addAnswerForm">
+
+    <div class="ui control-group" ng-class="{error: addAnswerForm.site.$invalid}">
+    <textarea name="description" ng-model="answerDoc.properties['dc:description']" required></textarea>
+      <span ng-show="addAnswerForm.site.$error.required" class="help-inline">
+          Required</span>
+    </div>    
+    <br>
+    <button ng-click="addAnswer()" ng-disabled="isClean() || addAnswerForm.$invalid"
+            class="btn btn-primary">Save</button>
+  <div class="ui dimmer"  ng-class="{active:wait}">
+    <div class="ui loader"></div>
+  </div>
+</form>

@@ -1,0 +1,8 @@
+<component name="org.nuxeo.question.VoteUp">
+
+  <extension target="org.nuxeo.ecm.core.operation.OperationServiceComponent"
+    point="operations" >
+      <operation class="org.nuxeo.question.VoteUp" />
+   </extension>
+    
+</component>
