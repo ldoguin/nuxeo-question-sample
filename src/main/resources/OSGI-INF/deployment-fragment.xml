@@ -5,7 +5,7 @@
 
     <filter-mapping>
       <filter-name>NuxeoAuthenticationFilter</filter-name>
-      <url-pattern>/question/*</url-pattern>
+      <url-pattern>/questions/*</url-pattern>
       <dispatcher>REQUEST</dispatcher>
       <dispatcher>FORWARD</dispatcher>
     </filter-mapping>

@@ -23,10 +23,10 @@ import org.nuxeo.ecm.rating.api.LikeStatus;
 /**
  * @author ldoguin
  */
-@Operation(id = VoteUp.ID, category = Constants.CAT_DOCUMENT, label = "VoteUp", description = "")
-public class VoteUp {
+@Operation(id = VoteStatus.ID, category = Constants.CAT_DOCUMENT, label = "VoteStatus", description = "")
+public class VoteStatus {
 
-    public static final String ID = "Question.VoteUp";
+    public static final String ID = "VoteStatus";
 
     @Context
     CoreSession session;
@@ -37,7 +37,6 @@ public class VoteUp {
     @OperationMethod()
     public Blob run(DocumentModel doc) throws UnsupportedEncodingException {
         String username = session.getPrincipal().getName();
-        likeService.like(username, doc);
         LikeStatus status = likeService.getLikeStatus(username, doc);
         JSONObject json = JSONObject.fromObject(status.toMap());
         return new InputStreamBlob(new ByteArrayInputStream(

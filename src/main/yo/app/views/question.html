@@ -1,6 +1,6 @@
 <div class="active side ui segment">
   <h2 class="ui dividing header">
-    {{doc.title}}
+    {{doc.title}} ?
   </h2>
 
   <div class="ui grid">
@@ -9,9 +9,9 @@
         <div class="active side">
         <div class="ui selection list questionvotes">
           <form name="qForm">
-            <button ng-click="voteUp(doc.id)"
+            <button ng-click="voteUp(doc.path)"
               ng-show="doc.uid" class="ui green tiny button" title="Vote up"><i class="thumbs up icon"></i></button>
-            <button ng-click="voteDown(doc.id)"
+            <button ng-click="voteDown(doc.path)"
               ng-show="doc.uid" class="ui black tiny button" title="Vote Down"><i class="thumbs down icon"></i></button>
             <button ng-click="destroy()" ng-show="doc.uid" class="ui red tiny button" title="Delete"><i class="delete icon"></i></button>
           </form>
@@ -41,7 +41,7 @@
         <div class="one wide column">
           <div class="active side">
           <div class="ui selection list questionvotes">
-            <form name="qForm">
+            <form name="aForm">
               <button ng-click="voteUp(a.value.id)"
                 ng-show="a.value.id" class="ui green tiny button" title="Vote up"><i class="thumbs up icon"></i></button>
               <button ng-click="voteDown(a.value.id)"
@@ -55,10 +55,9 @@
         <div class="fifteen wide column">
           <div class="content">
             <div class="description">{{a.value.description}}</div>
-            <div class="ui circular label lastmodif">{{a.value.id}}</div>
             <p class="ui black circular label lastmodif">{{a.value.modified | date:'yyyy-MM-dd HH:mm:ss'}}</p>
             <p class="ui purple label creator">{{a.value.creator}}</p>
-            <p  class="ui green circular label votes">{{a.value.votes}}<i class="thumbs up icon"></i></p>
+            <p  class="ui green circular label votes">0<i class="thumbs up icon"></i></p>
           </div>
         </div>
       </div>

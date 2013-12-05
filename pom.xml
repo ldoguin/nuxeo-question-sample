@@ -28,6 +28,11 @@
       <artifactId>nuxeo-platform-imaging-api</artifactId>
       <version>${nuxeo.version}</version>
     </dependency>
+    <dependency>
+      <groupId>org.nuxeo.rating</groupId>
+      <artifactId>nuxeo-rating-api</artifactId>
+      <version>${nuxeo.version}</version>
+    </dependency>
   </dependencies>
   <build>
     <plugins>

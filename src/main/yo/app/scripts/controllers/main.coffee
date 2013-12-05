@@ -59,6 +59,15 @@ angular.module("nuxeoAngularSampleApp")
     $http.delete(nxUrl + "/id/"+answerid, @)
     $scope.updateChildren()
 
+  $scope.voteUp = (docId) ->
+    $http.post(nxUrl + "/path" + docId + "/@op/Question.VoteUp" , @)
+
+  $scope.voteStatus = (docId) ->
+    $http.post(nxUrl + "/path" + docId + "/@op/VoteStatus" , @)
+
+  $scope.voteDown = (docId) ->
+    $http.post(nxUrl + "/path" + docId + "/@op/Question.VoteDown" , @)
+
   $scope.updateChildren()
 ])
 
@@ -73,7 +82,6 @@ angular.module("nuxeoAngularSampleApp")
 
 
   $scope.save = () ->
-    $scope.doc.name = $scope.doc.properties["dc:title"]
     nxSession.createDocument("/collaboration/questions", $scope.doc).then (question) -> 
       $location.path("/question/" + question.uid + '/view')
 

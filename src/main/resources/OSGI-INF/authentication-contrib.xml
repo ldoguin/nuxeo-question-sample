@@ -1,11 +1,11 @@
-<component name="org.nuxeo.angular.sample.authentication.contrib">
+<component name="org.nuxeo.angular.sample.authentication.contriba">
   <extension
       target="org.nuxeo.ecm.platform.ui.web.auth.service.PluggableAuthenticationService"
       point="startURL">
 
     <startURLPattern>
       <patterns>
-        <pattern>question/</pattern>        
+        <pattern>questions/</pattern>        
       </patterns>
     </startURLPattern>
 

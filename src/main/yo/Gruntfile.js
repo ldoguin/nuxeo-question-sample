@@ -13,7 +13,7 @@ module.exports = function (grunt) {
   // configurable paths
   var yeomanConfig = {
     app: 'app',
-    dist: '../../../target/classes/web/nuxeo.war/question'
+    dist: '../../../target/classes/web/nuxeo.war/questions'
   };
 
   try {
