@@ -37,7 +37,7 @@ public class VoteDown {
     @OperationMethod()
     public Blob run(DocumentModel doc) throws UnsupportedEncodingException {
         String username = session.getPrincipal().getName();
-        likeService.like(username, doc);
+        likeService.cancel(username, doc);
         LikeStatus status = likeService.getLikeStatus(username, doc);
         JSONObject json = JSONObject.fromObject(status.toMap());
         return new InputStreamBlob(new ByteArrayInputStream(

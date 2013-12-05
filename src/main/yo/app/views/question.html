@@ -9,9 +9,9 @@
         <div class="active side">
         <div class="ui selection list questionvotes">
           <form name="qForm">
-            <button ng-click="voteUp(doc.path)"
+            <button ng-click="voteUp(doc.uid)"
               ng-show="doc.uid" class="ui green tiny button" title="Vote up"><i class="thumbs up icon"></i></button>
-            <button ng-click="voteDown(doc.path)"
+            <button ng-click="voteDown(doc.uid)"
               ng-show="doc.uid" class="ui black tiny button" title="Vote Down"><i class="thumbs down icon"></i></button>
             <button ng-click="destroy()" ng-show="doc.uid" class="ui red tiny button" title="Delete"><i class="delete icon"></i></button>
           </form>
@@ -27,7 +27,7 @@
             {{doc.properties["qs:community"]}}
           </div>
           </p>
-          <p class="description">{{doc.properties["qs:score"]}}</p>
+          <p class="description">{{docVoteStatus}}</p>
         </div>
       </div>
     </div>

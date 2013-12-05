@@ -34,6 +34,7 @@ angular.module("nuxeoAngularSampleApp")
 ($location,$q,$http,$scope, nxSession, nxSearch, $routeParams, nxUrl) ->
   $scope.doc = nxSession.getDocument($routeParams.id).fetch(['dublincore','question-schema'])
   $scope.answerDoc = { type:"answer", properties: {}}
+  $http.defaults.headers.post = { 'Content-Type' : 'application/json+nxrequest' }
 
   $scope.updateChildren = () ->
     childrenSearch = new nxSearch()
@@ -60,14 +61,21 @@ angular.module("nuxeoAngularSampleApp")
     $scope.updateChildren()
 
   $scope.voteUp = (docId) ->
-    $http.post(nxUrl + "/path" + docId + "/@op/Question.VoteUp" , @)
+    voteupUrl = nxUrl + "/id/" + docId + "/@op/Question.VoteUp"
+    $http.post(voteupUrl, {params:{}, headers: {"Content-Type": "application/json+nxrequest"}}).then ->
+      $scope.voteStatus(docId)
 
   $scope.voteStatus = (docId) ->
-    $http.post(nxUrl + "/path" + docId + "/@op/VoteStatus" , @)
+    voteupUrl = nxUrl + "/id/" + docId + "/@op/VoteStatus"
+    $http.post(voteupUrl, {params:{}, headers: {"Content-Type": "application/json+nxrequest"}}).then (results) ->
+      $scope.docVoteStatus = results.data.likesCount
 
   $scope.voteDown = (docId) ->
-    $http.post(nxUrl + "/path" + docId + "/@op/Question.VoteDown" , @)
+    voteupUrl = nxUrl + "/id/" + docId + "/@op/Question.VoteDown"
+    $http.post(voteupUrl, {params:{}, headers: {"Content-Type": "application/json+nxrequest"}}).then ->
+      $scope.voteStatus(docId)
 
+  $scope.voteStatus($routeParams.id)
   $scope.updateChildren()
 ])
 
