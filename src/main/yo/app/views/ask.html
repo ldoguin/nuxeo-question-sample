@@ -1,29 +1,30 @@
-<form name="myForm">
+<div class="active side ui segment">
+  <form name="myForm" class="ui form control-group">
 
-  <div class="ui form control-group" ng-class="{error: myForm.name.$invalid}">
-    <label>Ask a question</label>
-    <input type="text" name="title" ng-model="doc.properties['dc:title']" required>
+  <div class="field" ng-class="{error: myForm.name.$invalid}">
+    <h2>Ask a question</h2>
+    <label>Title</label>
+    <input type="text" name="title" placeholder="A question as clear and concise as possible" ng-model="doc.properties['dc:title']" required>
     <span ng-show="myForm.name.$error.required" class="help-inline">
         Required</span>
   </div>
-  <br>
-  <div class="ui form control-group" ng-class="{error: myForm.site.$invalid}">
-  <textarea name="description" ng-model="doc.properties['dc:description']" required></textarea>
+  <div class="field" ng-class="{error: myForm.site.$invalid}">
+  <label>Description</label>
+  <textarea name="description" ng-model="doc.properties['dc:description']" placeholder=" A factual description so that everyone understands the question and issue and can respond correctly" required></textarea>
     <span ng-show="myForm.site.$error.required" class="help-inline">
         Required</span>
   </div>
-
-  <div class="ui form control-group">
+  <div class="field">
     <label>Communities</label>
-    <select multiple id="communities" class="input-medium" ng-model="doc.properties['qs:community']">
+    <select multiple id="communities" class="ui input medium" ng-model="doc.properties['qs:community']">
        <option ng-repeat="community in communities">{{community.title}}</option>
     </select>
   </div>
-  <br>
-  <a href="#/questions" class="btn">Cancel</a>
+  <div class="field">
   <button ng-click="save()" ng-disabled="isClean() || myForm.$invalid"
-          class="btn btn-primary">Answer</button>
-
-
-</form>
+          class="ui blue submit button">Ask</button>
+  <a href="#/questions" class="btn">Cancel</a>
+  </div>
+  </form>
+</div>
 

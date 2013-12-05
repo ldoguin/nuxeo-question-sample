@@ -3,21 +3,22 @@
 <div ng-model="nxsearch.query" class="ui divid  ed list" infinite-scroll="nxsearch.nextPage()" infinite-scroll-disabled="nxsearch.busy" infinite-scroll-distance="1">
   <div class="item" ng-repeat="item in nxsearch.items">
     <div class="sides">
-      <div class="active side">
-        <a href="#/question/{{item.value.id}}/view">
+      <a href="#/question/{{item.value.id}}/view" class="question">
+        <div class="active side ui segment">
           <div class="content">
-            <div class="name">{{item.value.title}}</div>
+            <h4 class="title">{{item.value.title}}</h4>
             <p class="description">{{item.value.description}}</p>
-            <div ng-repeat="com in item.value.communities">
-              <p class="description">{{com}}</p>
+            <div ng-repeat="com in item.value.communities" class="ui label">
+              <i class="folder icon"></i>
+              {{com}}
             </div>
-            <p class="description">{{item.value.modified | date:'yyyy-MM-dd HH:mm:ss'}}</p>
-            <p class="description">{{item.value.creator}}</p>
-            <p class="description">{{item.value.votes}}</p>
-            <p class="description">{{item.value.answers}}</p>
+            <p class="ui black circular label lastmodif">{{item.value.modified | date:'yyyy-MM-dd HH:mm:ss'}}</p>
+            <p class="ui purple label creator">{{item.value.creator}}</p>
+            <p class="ui green circular label votes">{{item.value.votes}}<i class="thumbs up icon"></i></p>
+            <p class="answers">{{item.value.answers}}</p>
           </div>
-        </a>
-      </div>
+        </div>
+      </a>
     </div>
   </div>
 </div>

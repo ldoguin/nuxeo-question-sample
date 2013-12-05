@@ -1,6 +1,10 @@
 @import 'bootstrap/less/bootstrap.less';
 @import 'bootstrap-glyphicons.less';
 
+html, body {
+ font-size: 15px;
+}
+
 .navbar-brand {
   max-width: 250px;
   font-color: white;
@@ -19,4 +23,36 @@ body {
 footer {
   margin-top: 2em;
   border-top: 1px solid #1b5983;
+}
+
+.hide {
+  display:none;
+}
+
+.ui.menu .item > .input input, .ui.menu .item > input[type="text"] {
+  margin: -0.6em 0;
+}
+
+.description {
+ padding-bottom: .8em;
+}
+
+a.question {
+text-decoration: none;
+}
+
+.ui.list.questionvotes {
+ margin-left: 1em;
+}
+
+.questionvotes .button {
+  margin: 0 0 0.3em;
+}
+
+select {
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.3125em;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.3) inset;
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 0.875em;
 }

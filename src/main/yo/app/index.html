@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="components/semantic-ui/build/packaged/css/semantic.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="nuxeoAngularSampleApp">
+  <body ng-app="nuxeoAngularSampleApp" class="Grid">
     <!--[if lt IE 7]>
       <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
     <![endif]-->
@@ -29,11 +29,6 @@
 
     <!-- Add your site or application content here -->
 
-
-
-
-
-
 <div class="main container">
 
 <div ng-controller="HeaderCtrl" class="ui menu">
@@ -41,7 +36,7 @@
     <i class="reorder icon"></i> Latest
   </a>
   <a href="#/questions/unanswered" ng-class="{active:isActive('unanswered')}" class="item">
-    <i class="question icon"></i> UnAnswered
+    <i class="question icon"></i> Unanswered
   </a>
   <a href="#/questions/answered" ng-class="{active:isActive('answered')}" class="item">
     <i class="checkmark icon"></i> Answered
@@ -50,15 +45,16 @@
     <i class="archive icon"></i> Archived
   </a>
   <form ng-class="{error: myForm.site.$invalid}" class="item input" name="myFprm">
-    <input ng-model="tagToSearch" type="text" placeholder="Enter a search term here" required>
-      <i class="ui search icon"></i>
-    </input>
-    <button ng-click="doSearch()" class="ui item blue submit button">Search</button>
+    <div class="ui icon input">
+    <input ng-model="tagToSearch" type="text" placeholder="I'm looking for …" />
+    <i class="ui search icon"></i>
+    <button ng-click="doSearch()" class="ui submit button hide">Search</button>
+    </div>
     <span ng-show="myForm.site.$error.required" class="help-inline">
       Required</span>
   </form>
   <div class="right menu">
-    <a href="#/question/ask" class="ui item blue submit button">
+    <a href="#/question/ask" class="large ui blue submit button">
       Ask a Question
     </a>
   </div>
@@ -70,7 +66,6 @@
   &copy; Nuxeo 2013
   </footer>
 
-
     <!-- build:js scripts/components.js -->
     <script src="components/jquery/jquery.js"></script>   
     <script src="components/angular-1.1.x/angular.js"></script>
@@ -80,7 +75,6 @@
     <script src="components/nginfinitescroll/build/ng-infinite-scroll.min.js"></script>
     <!-- endbuild -->
 
-
     <!-- build:js(.tmp) scripts/scripts.js -->    
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/main.js"></script>
@@ -88,8 +82,6 @@
     <script src="scripts/services/nxHeader.js"></script>
     <script src="scripts/services/nxSession.js"></script>
     <!-- endbuild -->
-
-    
 
   </body>
 </html>
