@@ -4,8 +4,6 @@
 
 package org.nuxeo.question;
 
-import java.util.List;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.nuxeo.ecm.core.api.ClientException;
@@ -22,8 +20,8 @@ public class Question extends AbstractElement {
         this.doc = doc;
     }
 
-    public List<String> getCommunities() throws ClientException {
-        return doc.getProperty("qs:community").getValue(List.class);
+    public Object getCommunities() throws ClientException {
+        return doc.getProperty("qs:community").getValue();
     }
 
 //    public void getSubscribtion() {

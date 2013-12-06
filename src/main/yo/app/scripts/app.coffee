@@ -6,7 +6,7 @@ angular.module("nuxeoAngularSampleApp", ['infinite-scroll'])
     apiRootPath: nxUrl
   )
 ])
-.config ($routeProvider) ->
+.config ["$routeProvider", ($routeProvider) ->
   $routeProvider
   .when("/questions"
     templateUrl: "views/questions.html"
@@ -30,3 +30,4 @@ angular.module("nuxeoAngularSampleApp", ['infinite-scroll'])
   )
   
   .otherwise redirectTo: "/questions/"
+]

@@ -76,7 +76,7 @@
       <span ng-show="addAnswerForm.site.$error.required" class="help-inline">Required</span>
       </div>
       <button ng-click="addAnswer()" ng-disabled="isClean() || addAnswerForm.$invalid" class="btn btn-primary">Publish</button>
-    <div class="ui inverted dimmer"  ng-class="{active:wait}">
+    <div class="ui dimmer"  ng-class="{active:wait}">
       <div class="ui loader"></div>
     </div>
   </form>
