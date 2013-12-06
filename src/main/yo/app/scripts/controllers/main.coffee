@@ -1,7 +1,7 @@
 
 angular.module("nuxeoAngularSampleApp")
 
-.controller("HeaderCtrl", 
+.controller("HeaderCtrl",
 ['$scope','$routeParams','$location','nxHeader'
 ($scope,$routeParams,$location,nxHeader) ->
 
@@ -15,7 +15,7 @@ angular.module("nuxeoAngularSampleApp")
 ])
 
 
-.controller("QuestionsCtrl", 
+.controller("QuestionsCtrl",
 ['$scope','$routeParams','$location','nxSearch','nxHeader'
 ($scope,$routeParams,$location,nxSearch,nxHeader) ->
   currentLifeCycleState = $routeParams.type
@@ -34,7 +34,7 @@ angular.module("nuxeoAngularSampleApp")
 ($location,$q,$http,$scope, nxSession, nxSearch, $routeParams, nxUrl) ->
   $scope.doc = nxSession.getDocument($routeParams.id).fetch(['dublincore','question-schema'])
   $scope.answerDoc = { type:"answer", properties: {}}
-  $http.defaults.headers.post = { 'Content-Type' : 'application/json+nxrequest' }
+  #$http.defaults.headers.post = { 'Content-Type' : 'application/json+nxrequest' }
 
   $scope.updateChildren = () ->
     childrenSearch = new nxSearch()
@@ -48,7 +48,7 @@ angular.module("nuxeoAngularSampleApp")
     $scope.answerDoc.name = "answer"
     $scope.answerDoc.properties["dc:title"]= "answer"
     $scope.wait = true
-    nxSession.createDocument($scope.doc.path, $scope.answerDoc).then (answer) -> 
+    nxSession.createDocument($scope.doc.path, $scope.answerDoc).then (answer) ->
       $scope.updateChildren()
       $scope.wait = false
 
@@ -62,17 +62,17 @@ angular.module("nuxeoAngularSampleApp")
 
   $scope.voteUp = (docId) ->
     voteupUrl = nxUrl + "/id/" + docId + "/@op/Question.VoteUp"
-    $http.post(voteupUrl, {params:{}, headers: {"Content-Type": "application/json+nxrequest"}}).then ->
+    $http.post(voteupUrl, {params:{}}, {headers: {"Content-Type": "application/json+nxrequest"}}).then ->
       $scope.voteStatus(docId)
 
   $scope.voteStatus = (docId) ->
     voteupUrl = nxUrl + "/id/" + docId + "/@op/VoteStatus"
-    $http.post(voteupUrl, {params:{}, headers: {"Content-Type": "application/json+nxrequest"}}).then (results) ->
+    $http.post(voteupUrl, {params:{}}, {headers: {"Content-Type": "application/json+nxrequest"}}).then (results) ->
       $scope.docVoteStatus = results.data.likesCount
 
   $scope.voteDown = (docId) ->
     voteupUrl = nxUrl + "/id/" + docId + "/@op/Question.VoteDown"
-    $http.post(voteupUrl, {params:{}, headers: {"Content-Type": "application/json+nxrequest"}}).then ->
+    $http.post(voteupUrl, {params:{}}, {headers: {"Content-Type": "application/json+nxrequest"}}).then ->
       $scope.voteStatus(docId)
 
   $scope.voteStatus($routeParams.id)
@@ -90,7 +90,7 @@ angular.module("nuxeoAngularSampleApp")
 
 
   $scope.save = () ->
-    nxSession.createDocument("/collaboration/questions", $scope.doc).then (question) -> 
+    nxSession.createDocument("/collaboration/questions", $scope.doc).then (question) ->
       $location.path("/question/" + question.uid + '/view')
 
 ])
